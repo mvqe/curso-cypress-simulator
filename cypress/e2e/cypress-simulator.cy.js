@@ -14,7 +14,7 @@ describe("Cypress Simulator", () => {
     cy.get("#outputArea", { timeout: 6000 })
       .should("be.visible")
       .should("contain", "Error:")
-      .and("contain", "Missing parentheses on `cy.visit` command");
+      .and("contain", "Missing parentheses on `cy.error` command");
   });
 
   it("Checks the run button disabled and enabled states", () => {
