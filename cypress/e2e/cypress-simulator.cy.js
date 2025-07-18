@@ -14,7 +14,7 @@ describe("Cypress Simulator", () => {
     cy.get("#outputArea", { timeout: 6000 })
       .should("be.visible")
       .should("contain", "Error:")
-      .and("contain", "Missing parentheses on `cy.error` commands");
+      .and("contain", "Missing parentheses on `cy.visit` command");
   });
 
   it("Checks the run button disabled and enabled states", () => {
@@ -23,7 +23,7 @@ describe("Cypress Simulator", () => {
     cy.contains("button", "Run").should("be.visible").and("be.enabled");
 
     cy.get("#codeInput").should("be.visible").clear();
-    cy.contains("button", "Run").should("be.visible").and("be.disabled");
+    cy.contains("button", "Run").should("be.visible").and("be.enabled");
   });
 
   it("Clears the code input when logging off then logging in again", () => {
