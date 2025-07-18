@@ -9,18 +9,20 @@ describe("Cypress Simulator - a11y checks", () => {
     cy.injectAxe();
   });
 
-  it("Sucessfully simulates a Cypress command (cy.visit ())", () => {
-    cy.run("cy.visit('www.google.com')");
+  Cypress._.times(100, () => {
+    it("Sucessfully simulates a Cypress command (cy.visit ())", () => {
+      cy.run("cy.visit('www.google.com')");
 
-    cy.get("#outputArea", { timeout: 6000 })
-      .should("be.visible")
-      .should("contain", "Success:")
-      .and(
-        "contain",
-        "cy.visit('www.google.com') // Visited URL 'www.google.com'"
-      );
+      cy.get("#outputArea", { timeout: 6000 })
+        .should("be.visible")
+        .should("contain", "Success:")
+        .and(
+          "contain",
+          "cy.visit('www.google.com') // Visited URL 'www.google.com'"
+        );
 
-    cy.checkA11y("pre[class='success']");
+      cy.checkA11y("pre[class='success']");
+    });
   });
 
   it("Shows an error when entering and running an invalid Cypress command (cy.run)", () => {
