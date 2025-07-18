@@ -23,7 +23,7 @@ describe("Cypress Simulator", () => {
     cy.contains("button", "Run").should("be.visible").and("be.enabled");
 
     cy.get("#codeInput").should("be.visible").clear();
-    cy.contains("button", "Run").should("be.visible").and("be.enabled");
+    cy.contains("button", "Run").should("be.visible").and("be.disabled");
   });
 
   it("Clears the code input when logging off then logging in again", () => {
