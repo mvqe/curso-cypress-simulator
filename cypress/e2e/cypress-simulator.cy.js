@@ -91,3 +91,22 @@ describe("Cypress Simulator - Cookie Consent", () => {
       .should("be.equal", "declined");
   });
 });
+
+describe.only("Cypress Simulator - Glitch in the Matrix", () => {
+  beforeEach(() => {
+    cy.login();
+    cy.visit("./src/index.html?skipCaptcha=true&chancesOfError=1", {
+      onBeforeLoad: (win) => {
+        win.localStorage.setItem("cookieConsent", "declined");
+      },
+    });
+  });
+
+  it("Errors out with a glitch in the Matrix", () => {
+    cy.run("cy.visit()");
+
+    cy.get("#outputArea", { timeout: 6000 })
+      .should("be.visible")
+      .and("contain", "There's a glitch in the Matrix.");
+  });
+});
